@@ -1,0 +1,12 @@
+Silence DSNONE
+
+// Weapons
+
+// :Fire:
+ctc/fireshot FIR_P_1
+ctc/fireshotdie FIR_P_2
+
+// :Water:
+ctc/watershot WAT_P_1
+ctc/watershotdie WAT_P_2
+ctc_watershotsplash WAT_P_3

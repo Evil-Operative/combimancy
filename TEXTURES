@@ -1,0 +1,6 @@
+Graphic FW_ICN, 16, 16
+{
+   Patch FW_ICO0, 0, 0
+   XScale 2.0
+   YScale 2.0
+}

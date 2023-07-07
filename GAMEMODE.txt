@@ -1,0 +1,19 @@
+DefaultGameSettings
+{
+	sv_weaponstay = true
+	sv_weapondrop = false
+	sv_itemrespawn = true
+	sv_nocrouch = true
+	sv_allowjump = true
+	sv_allowcrouch = false
+	sv_unblockallies = true
+	
+	// Zandronum 3.1
+	sv_shootthroughallies = true
+	sv_dontpushallies = true
+}
+
+DefaultLockedGameSettings
+{
+	//sv_nomedals = true
+}

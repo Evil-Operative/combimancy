@@ -1,0 +1,6 @@
+// ESSENTIALS
+#include "Actors/CombimancerClass.txt"
+#include "Actors/AmmoTypes.txt"
+
+// WEAPONS
+#include "Actors/FireWater.txt"

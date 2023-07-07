@@ -1,0 +1,13 @@
+#library "ELEMDEFS"
+#include "zcommon.acs"
+
+#include "DTADD.acs"
+
+Script "combimancer_weaponinfo" OPEN {
+
+	// Fire as Primary
+	DefineDoubleAmmoWeapon("TAG_FIREWATERSET", "FireWaterSet", "FW_ICO0", "FireSetAmmo", 1.00, "WaterSetAmmo", 1.00, DTADD_SLOT_0, false, false, false);
+	
+	// Water as Primary
+	
+}

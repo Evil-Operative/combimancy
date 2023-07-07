@@ -1,0 +1,13 @@
+$playersound	CombimancerClass		male	*death		MEGADEAT
+$playersound	CombimancerClass		male	*xdeath		MEGADEAT
+$playersound	CombimancerClass		male	*gibbed		MEGADEAT
+$playersound	CombimancerClass		male	*critdeth	CRITDIE
+$playersound	CombimancerClass		male	*pain100	MEGAPAIN
+$playersound	CombimancerClass		male	*pain75		MEGAPAIN
+$playersound	CombimancerClass		male	*pain50		MEGAPAIN
+$playersound	CombimancerClass		male	*pain25		MEGAPAIN
+$playersound	CombimancerClass		male	*grunt		dsnone
+$playersound	CombimancerClass		male	*jump		dsnone
+$playersound	CombimancerClass		male	*fist		dsnone
+$playersound	CombimancerClass		male	*usefail	LAND
+$playersound	CombimancerClass		male	*land		LAND

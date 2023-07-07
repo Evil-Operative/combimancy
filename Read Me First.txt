@@ -1,0 +1,26 @@
+COMBIMANCY : TRIAL BY COMBAT - Ver 0.1 Alpha
+
+=[ ASK FOR PERMISSION BEFORE BORROWING ORIGINAL CODE (DECORATE, ACS ETC.) ]=
+
+--------------------------------------------------------------------------------
+
+== DEVELOPMENT TEAM ==
+Ecl1p5e - Head of Development, Lead Programmer
+The3DLuxe - Head of Development, Original Conceptualiser
+
+== ADDITIONAL CREDITS (in alphabetical order) ==
+CBM Team - Borrowed Graphics and Sounds
+
+Please approach me on Discord (www.smileycentral.com) if you want your work 
+credited!
+
+--------------------------------------------------------------------------------
+File packed on: 7 July 2023
+--------------------------------------------------------------------------------
+
+This is a modification for Mega Man 8-Bit Deathmatch that focuses on combining
+two primary elements to create your own custom superweapons to fight enemies.
+
+Follow Development at: https://discord.gg/nMvDuZX
+
+--------------------------------------------------------------------------------

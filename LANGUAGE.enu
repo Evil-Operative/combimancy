@@ -1,0 +1,9 @@
+[enu default]
+
+//Weapon Tags
+TAG_FIREWATERSET = "\c[q7]Fire \c-| \c[l5]Water";
+TAG_WATERFIRESET = "\c[l5]Water \c-| \c[q7]Fire";
+
+//Obituary Messages 
+OB_FIRESET = "%o was enflamed by %k's Fire Element.";
+OB_WATERSET = "%o was splashed by %k's Water Element.";

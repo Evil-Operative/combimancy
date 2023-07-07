@@ -1,0 +1,13 @@
+Actor FireSetAmmo : Ammo
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 28
+	+INVENTORY.IGNORESKILL
+}
+
+Actor WaterSetAmmo : Ammo
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 28
+	+INVENTORY.IGNORESKILL
+}

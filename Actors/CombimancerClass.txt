@@ -1,0 +1,16 @@
+Actor CombimancerClass : Megaman
+{
+	Player.ForwardMove 0.76, 0.76
+	Player.SideMove 0.74, 0.74
+
+	Player.JumpZ 10
+	Gravity 0.8
+
+	Health 100
+	Player.MaxHealth 100
+
+	Player.StartItem "BaseFlagPack", 1
+	Player.StartItem "ModeWeps", 1
+	Player.StartItem "FireWaterSet"
+	//Player.StartItem "BusterAmmo", 3
+}

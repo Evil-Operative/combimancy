@@ -1,0 +1,165 @@
+Actor FireWaterSet_NormalBar : NormalBar { Args 4, 219}
+Actor FireWaterSet_SecondBar : SecondBar { Args 4, 71}
+
+Actor FireWaterSet : BaseMM8BDMWep
+{
+	-WEAPON.ALT_USES_BOTH
+	
+	Weapon.AmmoUse1 1
+	Weapon.AmmoGive1 28
+	Weapon.AmmoType1 "FireSetAmmo"
+	
+	Weapon.AmmoUse2 1
+	Weapon.AmmoGive2 28
+	Weapon.AmmoType2 "WaterSetAmmo"
+
+	Weapon.SlotNumber 0
+
+	Inventory.PickupMessage "Fire-Water Set!"
+	Obituary "You forgot to define an obituary in the projectile."
+	Tag "$TAG_FIREWATERSET"
+
+	Inventory.Icon "FW_ICN"
+
+	States
+	{
+		SpawnLoop:
+			WEAP X 1
+			loop
+
+		Ready:
+			BUST B 0 ACS_NamedExecuteWithResult("core_weaponcolor", CLR_MEGABUSTER)
+			BUST B 0 A_GiveInventory("FireSetAmmo",1)
+			BUST B 0 A_GiveInventory("WaterSetAmmo",1)
+			BUST B 18 A_WeaponReady
+			goto Ready+1
+
+		Select:
+			BUST B 0
+			goto SelectSwap
+		Deselect:
+			BUST B 0
+			goto DeselectSwap
+
+		Fire:
+			BUST B 0 A_JumpIfNoAmmo("NoAmmo")
+			BUST B 0 A_PlaySoundEx("ctc/fireshot","Weapon")
+			BUST B 0 A_FireCustomMissile("FireSet_Shot",0,1,8,0)
+			BUST CD 3
+			BUST B 4
+			BUST B 0 A_Refire
+			goto Ready+1
+			
+		Altfire:
+			BUST B 0 A_JumpIfNoAmmo("NoAmmo")
+			BUST B 0 A_PlaySoundEx("ctc/watershot","Weapon")
+			BUST B 0 A_FireCustomMissile("WaterSet_Shot",0,1,8,0)
+			BUST CD 3
+			BUST B 15
+			BUST B 0 A_Refire
+			goto Ready+1
+
+		NoAmmo:
+			BUST B 1 ACS_NamedExecuteWithResult("core_noammo",0)
+			goto Ready+1
+	}
+}
+
+Actor FireSet_Shot : BasicProjectile
+{
+	+BRIGHT
+	Translation "192:192=229:229", "198:198=219:219"
+	DamageType "FireSet"
+	Obituary "$OB_FIRESET"
+	
+	Radius 5
+	Height 5
+	Damage (10)
+	Speed 38
+	States
+	{
+		Spawn:
+			CP_F AB 4
+			Loop
+		Death:
+			TNT1 A 0 A_PlaySound("ctc/fireshotdie",CHAN_WEAPON)
+			Stop
+	}
+}
+
+Actor WaterSet_Shot : BasicProjectile
+{
+	-NOGRAVITY
+	Translation "192:192=203:203", "198:198=71:71"
+	DamageType "WaterSet"
+	Obituary "$OB_WATERSET"
+	
+	Radius 10
+	Height 6
+	Damage (30)
+	Gravity 0.8
+	Speed 32
+	States
+	{
+		Spawn:
+			TNT1 A 0 NoDelay ThrustThingZ(0,25,0,1)
+			CP_W ABCB 4
+			Goto Spawn+1
+		Death:
+			TNT1 A 0 A_PlaySound("ctc/watershotdie",CHAN_WEAPON)
+			TNT1 A 0 A_SetArg(2,(ceilingz-z<=16)*-4+(z-floorz==0)*4)
+			TNT1 AAAAAAA 0 A_SpawnItemEx("WaterSet_SplashBit",0,0,Args[2],random(-10+abs(Args[2]),10-abs(Args[2])),random(-10+abs(Args[2]),20-abs(Args[2])),random(-2+abs(Args[2]),2+abs(Args[2])),0,1,32)
+			TNT1 A 0 A_ChangeFlag("NOGRAVITY",True)
+			CP_W DEF 2
+			Stop
+	}
+}
+
+Actor WaterSet_SplashBit : BasicProjectile
+{
+	Translation "192:192=203:203", "198:198=71:71"
+    +FORCEXYBILLBOARD
+    -NOGRAVITY
+    +HEXENBOUNCE
+	+USEBOUNCESTATE
+	+BOUNCEONCEILINGS
+    Obituary "WaterSet"
+    DamageType "$OB_WATERSET"
+    BounceCount 2
+	Radius 10
+	Height 10
+	Damage (10)
+	Gravity 0.75
+	Speed 20
+    States
+    {
+		Spawn:
+        CP_W G 0 NoDelay A_ChangeFlag(HEXENBOUNCE, False)
+        CP_W GHIH 2
+        Goto Spawn+1
+		
+		Bounce.Ceiling:
+        TNT1 A 0 A_ChangeFlag(USEBOUNCESTATE, False)
+        TNT1 A 0 A_ChangeFlag(BOUNCEONCEILINGS, False)
+        TNT1 A 0 A_ChangeVelocity(momx, momy, momz-1, CVF_REPLACE)
+        goto Spawn+1
+		
+		Death:
+		TNT1 A 0 A_Stop
+        TNT1 A 0 A_SpawnItemEx("WaterSet_SplashBitDie",0,0,0,0,0,0,0,SXF_WEPFXCOLOR)
+        Stop
+    }
+}
+
+actor WaterSet_SplashBitDie
+{
+	Translation "192:192=203:203", "198:198=71:71"
+    +FORCEXYBILLBOARD
+    States
+    {
+		SpawnFrame:
+        TNT1 A 0 A_PlaySound("ctc_watershotsplash",CHAN_WEAPON,0.5)
+        CP_W JKL 3
+        Stop
+    }
+}
